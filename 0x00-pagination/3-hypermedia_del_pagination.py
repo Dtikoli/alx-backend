@@ -56,12 +56,10 @@ class Server:
         data = []
         response['index'] = index
         for i in range(page_size):
-            while True:
-                curr = dataset.get(index)
-                index += 1
-                if curr is not None:
-                    break
-            data.append(curr)
+            curr = dataset.get(index)
+            if curr:
+                data.append(curr)
+            index += 1
 
         response['data'] = data
         response['page_size'] = len(data)
