@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Contains class to create simple pagination from csv data """
 import csv
+import math
 from typing import List
 index_range = __import__('0-simple_helper_function').index_range
 
@@ -64,7 +65,7 @@ class Server:
         Returns:
             List[List]: The page of the dataset.
         """
-        total_pages = len(self.dataset()) // page_size + 1
+        total_pages = math.ceil(len(self.dataset()) / page_size)
         data = self.get_page(page, page_size)
         info = {
             "page": page,
