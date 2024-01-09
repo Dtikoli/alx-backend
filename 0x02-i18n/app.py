@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""
-Flask app
-"""
+""" Flask app """
+
 import locale
 from flask import (
     Flask,
@@ -10,7 +9,7 @@ from flask import (
     g
 )
 from flask_babel import Babel
-from datetime import timezone as tmzn
+from datetime import timezone
 from datetime import datetime
 from pytz import timezone
 import pytz.exceptions
