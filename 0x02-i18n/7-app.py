@@ -8,9 +8,7 @@ from flask import (
     g
 )
 from flask_babel import Babel
-from datetime import timezone
-from pytz import timezone
-import pytz.exceptions
+import pytz
 from typing import (
     Dict,
     Union
@@ -85,13 +83,13 @@ def get_timezone():
     tzone = request.args.get('timezone', None)
     if tzone:
         try:
-            return timezone(tzone).zone
+            return pytz.timezone(tzone).zone
         except pytz.exceptions.UnknownTimeZoneError:
             pass
     if g.user:
         try:
             tzone = g.user.get('timezone')
-            return timezone(tzone).zone
+            return pytz.timezone(tzone).zone
         except pytz.exceptions.UnknownTimeZoneError:
             pass
     dflt = app.config['BABEL_DEFAULT_TIMEZONE']
